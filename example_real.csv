@@ -1,0 +1,5 @@
+episode_index,failure_start,failure_end,recovery_start,recovered,failure_type
+0,120,150,151,true,EX.GR.MISS.F01
+1,,,,,
+2,80,95,,false,slip
+3,200,230,236,true,collision

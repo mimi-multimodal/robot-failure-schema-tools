@@ -1,0 +1,6 @@
+{"segment_id": "episode_index",
+ "failure_frame_start": "failure_start",
+ "failure_frame_end": "failure_end",
+ "recovery_frame": "recovery_start",
+ "success": "recovered",
+ "error_code": "failure_type"}
