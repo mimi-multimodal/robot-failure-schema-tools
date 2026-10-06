@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use these tools, please cite them as below."
+title: "robot-failure-schema-tools"
+abstract: "Score the gap between synthetic and real robot failures: a converter into one failure-recovery schema and a Jensen-Shannon divergence scorer on four axes (failure type, failure length, recovery rate, recovery latency)."
+type: software
+authors:
+  - given-names: Mimi
+    family-names: Han
+    affiliation: "Mimi Multimodal AI"
+repository-code: "https://github.com/mimi-multimodal/robot-failure-schema-tools"
+license: MIT
+date-released: "2026-09-26"
+keywords:
+  - robotics
+  - robot-learning
+  - failure-detection
+  - synthetic-data

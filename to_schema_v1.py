@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Mimi Han (Mimi Multimodal AI)
+# SPDX-License-Identifier: MIT
+# https://github.com/mimi-multimodal/robot-failure-schema-tools
 """
 to_schema_v1.py — convert any episode table into Failure-Recovery Schema v1 JSON.
 
@@ -124,11 +127,20 @@ def main():
         "with_failure_frame": sum(s["failure_frame"] is not None for s in segs),
         "sha256": hashlib.sha256(body.encode()).hexdigest(),
         "license_note": "Inherits the source dataset license. The converted structure itself is CC BY 4.0 — Mimi Han, Mimi Multimodal AI",
+        "generator": "to_schema_v1.py — Mimi Han (Mimi Multimodal AI) — https://github.com/mimi-multimodal/robot-failure-schema-tools",
     }
     out = a.out or f"{a.source}_schema_v1.json"
     Path(out).write_text(json.dumps({"manifest": manifest, "segments": segs},
                                     ensure_ascii=False, indent=1), encoding="utf-8")
     print(json.dumps(manifest, ensure_ascii=False, indent=1))
+    blank = sum(s["failure_frame"] is None or s["recovery_frame"] is None for s in segs)
+    if blank:
+        print(f"\n{blank} of {len(segs)} segments have blank failure/recovery frames.\n"
+              "These can be labeled from your robot footage. Free pilot on 10-50 clips "
+              "(Mimi Han, Mimi Multimodal AI):\n"
+              "  public:  https://github.com/mimi-multimodal/robot-failure-schema-tools/issues/new?title=Pilot+request\n"
+              "  private: https://www.linkedin.com/in/mimi-han-31073a3b3",
+              file=sys.stderr)
 
 
 if __name__ == "__main__":
